@@ -70,6 +70,7 @@ const CustomNode = (props) => {
                         <TextField
                             id="title"
                             placeholder="Title"
+                            multiline={true}
                             InputProps={{
                                 className: classes.input,
                                 disableUnderline: true,
