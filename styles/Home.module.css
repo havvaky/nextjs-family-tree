@@ -36,7 +36,7 @@
 }
 
 .title a {
-  color: #0070f3;
+  color: #ab47b;
   text-decoration: none;
 }
 
@@ -62,22 +62,17 @@
   font-size: 1.5rem;
 }
 
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
 
 .grid {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
+  justify-content: space-around;
   margin-top: 3rem;
+    flex: 1 1;
+}
+
+.right {
+
 }
 
 .card {
