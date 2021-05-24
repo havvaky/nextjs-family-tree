@@ -1,10 +1,14 @@
-import '../styles/globals.css'
-import {ThemeProvider} from '@material-ui/core/styles';
-import React, {useEffect} from 'react'
-import theme from './theme'
-import Head from 'next/head'
+import '../styles/globals.css';
+import {ThemeProvider, makeStyles} from '@material-ui/core/styles';
+import React, {useEffect} from 'react';
+import theme from './theme';
+import Head from 'next/head';
+import Layout from '../components/layout'
+
+
 
 function MyApp({ Component, pageProps }) {
+
 
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -19,7 +23,9 @@ function MyApp({ Component, pageProps }) {
       <title>Family Tree</title>
     </Head>
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </>)
 }

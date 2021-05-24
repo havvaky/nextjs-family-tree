@@ -1,14 +1,15 @@
-import React, {useEffect, useState} from "react";
-import {Button, FormControl, IconButton, makeStyles, TextField, Typography} from "@material-ui/core";
-import auth from "./auth";
+import React, {useState} from 'react';
+import {Avatar, Button, IconButton, makeStyles, TextField, FormControl} from '@material-ui/core';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
-import Layout from '../components/layout';
-import InputLabel from '@material-ui/core/InputLabel';
+import auth from './auth';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+
 
 const useStyles = makeStyles(theme => ({
     main: {
@@ -17,48 +18,44 @@ const useStyles = makeStyles(theme => ({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    signUpWrap: {
+    wrapper: {
+        height: 500,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         boxShadow: '0 2px 4px rgb(0 0 0 / 10%)',
-        margin: 15,
-    },
-    signUp: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        margin: 15,
     },
     form: {
         display: 'flex',
         flexDirection: 'column',
+        padding: 35,
         '&>*': {
             margin: 15,
+            width: 400,
         }
     },
-    names: {
+    link: {
         display: 'flex',
-        '&>*': {
-            margin:5,
-        }
+        justifyContent: 'center'
+    },
+    lockIcon: {
+        marginTop: 40,
+        backgroundColor: theme.palette.primary.main,
     }
 }))
 
 
-// @ts-ignore
-export default function SignUp(props: any) {
-    const classes = useStyles();
+export default function Signin() {
     const router = useRouter();
+    const classes = useStyles();
 
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [values, setValues] = React.useState({
         password: '',
         showPassword: false,
     });
+    const [loginData, setLogindata] = useState({message:"", email: "", password: "", status:""  })
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -68,19 +65,15 @@ export default function SignUp(props: any) {
         setValues({ ...values, showPassword: !values.showPassword });
     };
 
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    };
 
-    const handleRegisterUser = async (event) => {
-event.preventDefault()
-        auth.login(() => {
-            router.push("/login")
-        });
+    const handleButtonClick = async (event) => {
+        event.preventDefault();
+       // console.log(email, password);
+
         const res = await fetch(
-            'api/users',
+            'api/login',
             {
-                body: JSON.stringify({firstName: `${firstName}`, lastName: `${lastName}`, email: `${email}`, password: `${values.password}` }),
+                body: JSON.stringify({email: `${email}`, password: `${values.password}` }),
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -88,45 +81,31 @@ event.preventDefault()
             }
         )
 
-        const result = await res.json()
+        let result = await res.json();
         console.log("result", result);
+        setLogindata(result);
+        console.log("message", result.message)
+;
+        auth.login(() => {
+            if (email === result.email && values.password === result.password) {
+                router.push("/");
+            }
+        })
+
     }
 
-    return (
+    return(<>
             <div className={classes.main}>
-            <div className={classes.signUpWrap}>
-                <div className={classes.signUp}>
-                    <Typography component="h1" variant="h5">
-                        Sign Up
-                    </Typography>
-                    <form className={classes.form} onSubmit={handleRegisterUser} method="POST">
-                        <div className={classes.names}>
-                            <TextField
-                                name="firstName"
-                                variant="outlined"
-                                fullWidth
-                                id="firstName"
-                                label="First Name"
-                                autoFocus
-                                value={firstName}
-                                onChange={e => setFirstName(e.target.value)}
-                                required
-                            />
-                            <TextField
-                                variant="outlined"
-                                fullWidth
-                                id="lastName"
-                                label="Last Name"
-                                name="lastName"
-                                value={lastName}
-                                onChange={e => setLastName(e.target.value)}
-                                required
-                            />
-                        </div>
+                <div className={classes.wrapper}>
+                    <Avatar className={classes.lockIcon}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <form className={classes.form} method="POST">
                         <TextField
-                            id="standard-password-input"
+                            id="outlined-basic"
                             label="Email"
                             type="email"
+                            autoComplete="current-email"
                             variant="outlined"
                             value={email}
                             onChange={e => setEmail(e.target.value)}
@@ -140,11 +119,10 @@ event.preventDefault()
                                 value={values.password}
                                 onChange={handleChange("password")}
                                 endAdornment={
-                                    <InputAdornment position="end">
+                                    <InputAdornment position="end" variant="filled">
                                         <IconButton
                                             aria-label="toggle password visibility"
                                             onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
                                             edge="end"
                                             size="small"
                                         >
@@ -155,11 +133,14 @@ event.preventDefault()
                                 labelWidth={125}
                             />
                         </FormControl>
-                        <Button variant="contained" color="primary" type="submit">Sign Up</Button>
+                        <Button variant="contained" color="primary" onClick={handleButtonClick}>Sign In</Button>
+                        <div className={classes.link}>
+                            <Link href="/signup">
+                                Don't have an account? Sign Up
+                            </Link>
+                        </div>
                     </form>
-                    <Link href="/login">Already have an account? </Link>
                 </div>
             </div>
-            </div>
-    )
+ </>)
 }

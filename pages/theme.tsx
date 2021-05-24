@@ -36,7 +36,7 @@ const theme = createMuiTheme({
             root: {
                 width: '1.2em',
                 height: '1.2em',
-                color: '#fff',
+                /*color: '#fff',*/
                 fontSize: '0.9rem'
             },
         },
@@ -46,6 +46,13 @@ const theme = createMuiTheme({
                 fontWeight: 400,
                 margin: 'dense',
                 color: '#fff',
+            }
+        },
+        MuiAvatar: {
+            root: {
+                width: '10',
+                height: '10',
+                background: '#7b1fa2',
             }
         }
     },

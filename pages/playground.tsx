@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import 'beautiful-react-diagrams/styles.css';
 import Diagram, { createSchema, useSchema } from 'beautiful-react-diagrams';
-import {Avatar, Button, InputAdornment, makeStyles, TextField} from '@material-ui/core';
+import {Avatar, Button, makeStyles, TextField} from '@material-ui/core';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-import classes from '*.module.css';
-import {disconnect} from 'cluster';
+import styles from '../styles/playground.module.css'
+
 
 
 // the diagram model
@@ -42,21 +42,21 @@ const CustomNode = (props) => {
     }
 
     return (<>
-        <div style={{ background: '#c57fd0', borderRadius: '5px', boxShadow: '12px 12px 12px rgb(0 0 0 / 20%)'}}>
-            <div style={{ display: `flex`, justifyContent: 'center' }}>
+        <div className={styles.main}>
+            <div className={styles.inputs}>
                 {inputs.map((port) => React.cloneElement(port, {
-                    style: { width: '15px', height: '15px', background: '#7b1fa2', borderRadius: '5px', alignItems: 'center', margin: '-5px' }
+                    style: { width: '15px', height: '15px', background: '#7b1fa2', borderRadius: '40%', alignItems: 'center', margin: '-5px' }
                 }))}
             </div>
-            { id =='node-1' ?  <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+            { id =='node-1' ?  <div className={styles.node}>
                 <Button onClick={handleClean}><DeleteOutlineIcon/></Button>
-            </div> : <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+            </div> : <div className={styles.node}>
                 <Button onClick={()=>data.onClick(id)}><DeleteForeverIcon/></Button>
             </div>}
             <form>
-                <div style={{ display: 'flex',alignItems: 'center', justifyContent: 'space-evenly', padding:'5px'}}>
+                <div className={styles.form}>
                     <Avatar alt="" src="/images/avatar/1.jpg" className={classes.avatar} />
-                    <div style={{ display: 'grid', justifyContent: 'center', alignItems: 'center' }} >
+                    <div className={styles.text} >
                         <TextField
                             id="full-name"
                             placeholder="Name"
@@ -81,7 +81,7 @@ const CustomNode = (props) => {
                     </div>
                 </div>
             </form>
-            <div style={{ display: `flex`, justifyContent: 'center', marginTop: '20px' }}>
+            <div className={styles.outputs}>
                 {outputs.map((port) => React.cloneElement(port, {
                     style: { width: '15px', height: '15px', background: '#7b1fa2', borderRadius: '40%', alignItems: 'center', margin: '-5px' }
                 }))}
@@ -137,7 +137,7 @@ export default function playground() {
 
 
     return (
-        <div style={{ height: '100vh' }}>
+        <div style={{ height: '100vh', width: '100vw' }}>
             <Button variant="contained" color="primary" onClick={addNewNode}><PersonAddIcon/></Button>
             <Diagram schema={schema} onChange={onChange} />
         </div>
