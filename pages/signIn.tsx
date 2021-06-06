@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Avatar, Button, IconButton, makeStyles, TextField, FormControl} from '@material-ui/core';
+import React, {useContext, useState} from 'react';
+import {Avatar, Button, IconButton, makeStyles, FormControl} from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
@@ -9,6 +9,9 @@ import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import result from 'postcss/lib/result';
+import { AppContext } from './AppContext';
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -28,6 +31,8 @@ const useStyles = makeStyles(theme => ({
     },
     form: {
         display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         flexDirection: 'column',
         padding: 35,
         '&>*': {
@@ -41,13 +46,16 @@ const useStyles = makeStyles(theme => ({
     },
     lockIcon: {
         marginTop: 40,
+        marginBottom: 0,
         backgroundColor: theme.palette.primary.main,
     }
 }))
 
 
-export default function Signin() {
+export default function signIn() {
     const router = useRouter();
+    const context = useContext(AppContext);
+    console.log("context", context);
     const classes = useStyles();
 
     const [email, setEmail] = useState("");
@@ -55,7 +63,8 @@ export default function Signin() {
         password: '',
         showPassword: false,
     });
-    const [loginData, setLogindata] = useState({message:"", email: "", password: "", status:""  })
+
+    const [loginData, setLoginData] = useState({message:"", email: "", password: "", status:""  })
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -83,15 +92,16 @@ export default function Signin() {
 
         let result = await res.json();
         console.log("result", result);
-        setLogindata(result);
+        setLoginData(result);
         console.log("message", result.message)
 ;
         auth.login(() => {
             if (email === result.email && values.password === result.password) {
                 router.push("/");
+                // @ts-ignore
+                context.toggleSignIn();
             }
         })
-
     }
 
     return(<>
@@ -101,20 +111,22 @@ export default function Signin() {
                         <LockOutlinedIcon />
                     </Avatar>
                     <form className={classes.form} method="POST">
-                        <TextField
-                            id="outlined-basic"
-                            label="Email"
-                            type="email"
-                            autoComplete="current-email"
-                            variant="outlined"
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
-                            required
-                        />
+                        {loginData.message ? <div className="loginMessage">{loginData.message}</div> : ""}
                         <FormControl variant="outlined" required>
-                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                            <InputLabel htmlFor="email">Email</InputLabel>
                             <OutlinedInput
-                                id="outlined-adornment-password"
+                                id="email"
+                                type="email"
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                                labelWidth={70}
+                                required
+                            />
+                        </FormControl>
+                        <FormControl variant="outlined" required>
+                            <InputLabel htmlFor="password">Password</InputLabel>
+                            <OutlinedInput
+                                id="password"
                                 type={values.showPassword ? "text" : "password"}
                                 value={values.password}
                                 onChange={handleChange("password")}
@@ -130,7 +142,7 @@ export default function Signin() {
                                         </IconButton>
                                     </InputAdornment>
                                 }
-                                labelWidth={125}
+                                labelWidth={120}
                             />
                         </FormControl>
                         <Button variant="contained" color="primary" onClick={handleButtonClick}>Sign In</Button>

@@ -1,34 +1,45 @@
 .main {
+    height: 100%;
+    width: 100%;
+}
+
+.wrapper {
     background: #c57fd0;
     border-radius: 5px;
-    box-shadow: 12px 12px 12px rgb(0 0 0 / 20%);
+    box-shadow: 12px 12px 12px rgb(0, 0, 0, 0.15);
 }
 
 .inputs {
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
 }
 
 .node {
     display: flex;
     justify-content: flex-end;
+    position: relative;
 }
 
 .outputs {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 18px;
 }
 
 .form {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding: 5px;
 }
 
 .text {
     display: grid;
     justify-content: center;
     align-items: center;
+}
+
+.addPerson {
+    height: 40px;
+    width: 70px;
 }

@@ -20,7 +20,18 @@ a:hover {
 }
 
 .bi-diagram-node {
-    width: 340px;
-
+    width: 360px;
 }
 
+.hide {
+    visibility: hidden;
+}
+
+.loginMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:red;
+    font-size: 15px;
+    margin-top: -10px;
+}

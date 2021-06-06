@@ -36,12 +36,14 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
         '&>*': {
             margin: 15,
+            width: 600,
         }
     },
     names: {
         display: 'flex',
         '&>*': {
             margin:5,
+            width: 600,
         }
     }
 }))
@@ -75,7 +77,7 @@ export default function SignUp(props: any) {
     const handleRegisterUser = async (event) => {
 event.preventDefault()
         auth.login(() => {
-            router.push("/login")
+            router.push("/signIn")
         });
         const res = await fetch(
             'api/users',
@@ -101,41 +103,45 @@ event.preventDefault()
                     </Typography>
                     <form className={classes.form} onSubmit={handleRegisterUser} method="POST">
                         <div className={classes.names}>
-                            <TextField
-                                name="firstName"
-                                variant="outlined"
-                                fullWidth
+                            <FormControl variant="outlined" required>
+                                <InputLabel htmlFor="firstName">First Name</InputLabel>
+                                <OutlinedInput
                                 id="firstName"
-                                label="First Name"
+                                name="firstName"
                                 autoFocus
                                 value={firstName}
                                 onChange={e => setFirstName(e.target.value)}
+                                labelWidth={128}
                                 required
                             />
-                            <TextField
-                                variant="outlined"
-                                fullWidth
+                            </FormControl>
+                            <FormControl variant="outlined" required>
+                                <InputLabel htmlFor="lastName">Last Name</InputLabel>
+                                <OutlinedInput
                                 id="lastName"
-                                label="Last Name"
                                 name="lastName"
                                 value={lastName}
                                 onChange={e => setLastName(e.target.value)}
+                                labelWidth={128}
                                 required
                             />
+                            </FormControl>
                         </div>
-                        <TextField
-                            id="standard-password-input"
-                            label="Email"
+                        <FormControl variant="outlined" required>
+                            <InputLabel htmlFor="email">Email</InputLabel>
+                        <OutlinedInput
+                            id="email"
                             type="email"
-                            variant="outlined"
                             value={email}
                             onChange={e => setEmail(e.target.value)}
+                            labelWidth={70}
                             required
                         />
+                        </FormControl>
                         <FormControl variant="outlined" required>
-                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                            <InputLabel htmlFor="password">Password</InputLabel>
                             <OutlinedInput
-                                id="outlined-adornment-password"
+                                id="password"
                                 type={values.showPassword ? "text" : "password"}
                                 value={values.password}
                                 onChange={handleChange("password")}
@@ -152,12 +158,12 @@ event.preventDefault()
                                         </IconButton>
                                     </InputAdornment>
                                 }
-                                labelWidth={125}
+                                labelWidth={120}
                             />
                         </FormControl>
                         <Button variant="contained" color="primary" type="submit">Sign Up</Button>
                     </form>
-                    <Link href="/login">Already have an account? </Link>
+                    <Link href="/signIn">Already have an account? </Link>
                 </div>
             </div>
             </div>

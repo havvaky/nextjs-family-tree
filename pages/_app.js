@@ -1,9 +1,10 @@
 import '../styles/globals.css';
-import {ThemeProvider, makeStyles} from '@material-ui/core/styles';
+import {ThemeProvider} from '@material-ui/core/styles';
 import React, {useEffect} from 'react';
 import theme from './theme';
 import Head from 'next/head';
 import Layout from '../components/layout'
+import { AppProvider } from './AppContext'
 
 
 
@@ -18,7 +19,8 @@ function MyApp({ Component, pageProps }) {
     }
   }, []);
 
-  return (<>
+  return (
+    <AppProvider>
     <Head>
       <title>Family Tree</title>
     </Head>
@@ -27,7 +29,8 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </Layout>
       </ThemeProvider>
-    </>)
+    </AppProvider>
+    )
 }
 
-export default MyApp
+export default MyApp;

@@ -20,39 +20,38 @@ const theme = createMuiTheme({
         MuiLink: {
             underline: 'hover',
         },
+
     },
     overrides: {
         MuiButton: {
             root: {
                 textTransform: 'none',
-                minWidth: '5px',
+                 minWidth: '5px',
             },
             text: {
-                size: 'small',
+                size: 'medium',
                 padding: 0,
-            }
+            },
         },
         MuiSvgIcon: {
             root: {
                 width: '1.2em',
                 height: '1.2em',
-                /*color: '#fff',*/
-                fontSize: '0.9rem'
+                fontSize: '0.7rem',
             },
         },
         MuiInputBase: {
             root: {
-                fontSize: '0.9rem',
+                fontSize: '0.7rem',
                 fontWeight: 400,
-                margin: 'dense',
-                color: '#fff',
+
             }
         },
-        MuiAvatar: {
+        MuiIconButton: {
             root: {
-                width: '10',
-                height: '10',
-                background: '#7b1fa2',
+                '&:hover': {
+                    backgroundColor: "none"
+                },
             }
         }
     },
