@@ -77,7 +77,7 @@ export default function SignUp(props: any) {
     const handleRegisterUser = async (event) => {
 event.preventDefault()
         auth.login(() => {
-            router.push("/signIn")
+            router.push("/login")
         });
         const res = await fetch(
             'api/users',

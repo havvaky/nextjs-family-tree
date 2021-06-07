@@ -75,7 +75,7 @@ export default function navigation() {
         },
         {
             text: "Sign In",
-            onClick: () => router.push("/signIn")
+            onClick: () => router.push("/login")
         },
         {
             text: "Playground",

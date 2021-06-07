@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
 import {Button, makeStyles} from '@material-ui/core';
 import {AppContext} from '../pages/AppContext';
-import { useRouter } from 'next/router'
-import Link from 'next/link';
+import {useRouter} from 'next/router'
+
 
 const useStyles = makeStyles((theme) => ({
     signInButton: {
@@ -21,6 +21,13 @@ export default function signInButton() {
     const context = useContext(AppContext);
 
     return(
-        <Link href={'/signIn'}><Button variant="contained" color="primary" className={classes.signInButton}>Sign In</Button></Link>
+        /*<Link href={'/login'}><Button variant="contained" color="primary" className={classes.signInButton}>Sign In</Button></Link>*/
+        <Button
+            variant="contained"
+            color="primary"
+            className={classes.signInButton}
+            onClick={() => router.push('/login')}
+            >Sign In
+        </Button>
     )
 };

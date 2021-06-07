@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-export default function signIn() {
+export default function login() {
     const router = useRouter();
     const context = useContext(AppContext);
     console.log("context", context);

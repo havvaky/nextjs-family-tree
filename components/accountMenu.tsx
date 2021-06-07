@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
     },
     signOut: {
+        marginRight: 5,
     }
 }))
 
@@ -35,9 +36,9 @@ export default function accountMenu() {
     };
 
     return(<>
-        <IconButton onClick={handleClick}>
+        <Button onClick={handleClick}>
             <Avatar alt="" src="/broken-image.jpg" className={classes.avatar} />
-        </IconButton>
+        </Button>
     <Menu
         className={classes.menu}
         id="simple-menu"
