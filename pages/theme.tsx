@@ -35,9 +35,9 @@ const theme = createMuiTheme({
         },
         MuiSvgIcon: {
             root: {
-                width: '1.2em',
-                height: '1.2em',
-                fontSize: '0.7rem',
+                width: '1.5em',
+                height: '1.5em',
+                fontSize: '0.6em',
             },
         },
         MuiInputBase: {
@@ -53,7 +53,7 @@ const theme = createMuiTheme({
                     backgroundColor: "none"
                 },
             }
-        }
+        },
     },
 });
 

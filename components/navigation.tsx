@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import {
     IconButton,
     List,
@@ -8,12 +8,13 @@ import {
     Toolbar,
     Typography,
     AppBar,
-    Divider, Drawer, Hidden,
+    Divider, Drawer, Hidden, Avatar, Button
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useRouter } from 'next/router';
-
-
+import {AppContext} from '../pages/AppContext';
+import SignInButton from './signInButton';
+import AccountMenu from './accountMenu';
 
 
 const drawerWidth = 240;
@@ -24,7 +25,9 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
     },
     appBar: {
+        display: 'flex',
         zIndex: theme.zIndex.drawer + 1,
+        width: '100%',
     },
     menuButton: {
         [theme.breakpoints.up('md')]: {
@@ -32,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     drawer: {
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('lg')]: {
             width: drawerWidth,
             flexShrink: 0,
         },
@@ -42,6 +45,12 @@ const useStyles = makeStyles((theme) => ({
     drawerPaper: {
         width: drawerWidth,
     },
+    toolbarWrap: {
+        width: '100vw',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    }
 }),
     {
         name: "MuiCustomStyle"
@@ -51,7 +60,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function navigation() {
     const classes = useStyles();
-    const router = useRouter()
+    const router = useRouter();
+    const context = useContext(AppContext);
     const [open, setOpen] = React.useState(false);
 
     const handleDrawerToggle = () => {
@@ -93,7 +103,7 @@ export default function navigation() {
     return (
         <div className={classes.root}>
             <AppBar position="fixed" className={classes.appBar}>
-                <Toolbar>
+                <Toolbar className={classes.toolbarWrap}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -106,6 +116,8 @@ export default function navigation() {
                     <Typography variant="h6" noWrap>
                         Family Tree
                     </Typography>
+                {/* @ts-ignore*/}
+                    {!context.isSignedIn ? <SignInButton/> : <AccountMenu/>}
                 </Toolbar>
             </AppBar>
             <nav className={classes.drawer}>

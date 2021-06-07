@@ -1,5 +1,7 @@
 import React, { createContext, useState } from "react";
 
+
+
 // @ts-ignore
 const AppContext = createContext();
 
@@ -16,7 +18,7 @@ function AppProvider(props:any) {
 
     const value = {
         isSignedIn: isSignedIn,
-        toggleSignIn : toggleSignIn
+        toggleSignIn : toggleSignIn,
     };
 
     return(

@@ -1,8 +1,6 @@
-import users from './data.js';
 
-/*
 let users = [{"firstName":"Havva", "lastName":"Yildiz", "email":"havvak@yahoo.com", "password":"1234", "role":"admin"}]
-*/
+
 
 
 function checkCredential(users, email, password){

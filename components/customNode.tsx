@@ -23,6 +23,10 @@ const useStyles = makeStyles(theme => ({
         top: '-8px',
         color: '#7b1fa2',
         marginRight: '5px'
+    },
+    clearIcon: {
+        color: '#7b1fa2',
+        fontSize: '1.5em'
     }
 }))
 
@@ -85,6 +89,7 @@ export default function customNode(props)  {
                                 endAdornment: (
                                     <InputAdornment position="end">
                                         <IconButton
+                                            className={classes.clearIcon}
                                             aria-label="clear input"
                                             onClick={handleClearName}
                                         >
@@ -107,6 +112,7 @@ export default function customNode(props)  {
                                 endAdornment: (
                                     <InputAdornment position="end">
                                         <IconButton
+                                            className={classes.clearIcon}
                                             aria-label="clear input"
                                             onClick={handleClearTitle}
                                         >
