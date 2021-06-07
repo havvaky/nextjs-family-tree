@@ -8,6 +8,18 @@ import CustomNode from '../components/customNode';
 import {AppContext} from './AppContext';
 
 
+
+interface NodeArray {
+    id: string,
+    content: string,
+    coordinates: number[],
+    render: (props: any) => JSX.Element,
+    data: {onClick: (id: any) => void},
+    inputs: {id: string}[],
+    outputs: {id: string}[],
+}
+
+
 const initialSchema = createSchema({
     nodes: [
         {
@@ -39,7 +51,7 @@ export default function playground() {
     };
 
     const addNewNode = () => {
-        const nextNode = {
+        const nextNode: NodeArray = {
             id: `node-${schema.nodes.length+1}`,
             content: `Node ${schema.nodes.length+1}`,
             coordinates: [
@@ -51,8 +63,6 @@ export default function playground() {
             inputs: [{ id: `port-${Math.random()}`}],
             outputs: [{ id: `port-${Math.random()}`}],
         };
-
-
         // @ts-ignore
         addNode(nextNode);
     }

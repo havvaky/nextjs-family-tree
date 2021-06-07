@@ -1,14 +1,17 @@
 import React, { createContext, useState } from "react";
 
+interface SignInValue <Type> {
+    isSignedIn: boolean,
+    toggleSignIn: () => void,
+}
 
 
-// @ts-ignore
-const AppContext = createContext();
+const AppContext = createContext(null);
 
-function AppProvider(props:any) {
+function AppProvider({children}) {
     const [isSignedIn, setIsSignedIn] = useState(false);
 
-    function toggleSignIn(): void {
+    function toggleSignIn() {
        if(isSignedIn === true) {
            setIsSignedIn(false);
        } else {
@@ -16,14 +19,14 @@ function AppProvider(props:any) {
        }
     }
 
-    const value = {
+    const value : SignInValue<boolean>= {
         isSignedIn: isSignedIn,
         toggleSignIn : toggleSignIn,
     };
 
     return(
         <AppContext.Provider value={value}>
-            {props.children}
+            {children}
         </AppContext.Provider>
     )
 }

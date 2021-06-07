@@ -116,7 +116,6 @@ export default function navigation() {
                     <Typography variant="h6" noWrap>
                         Family Tree
                     </Typography>
-                {/* @ts-ignore*/}
                     {!context.isSignedIn ? <SignInButton/> : <AccountMenu/>}
                 </Toolbar>
             </AppBar>

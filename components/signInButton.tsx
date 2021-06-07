@@ -21,7 +21,6 @@ export default function signInButton() {
     const context = useContext(AppContext);
 
     return(
-        /*<Link href={'/login'}><Button variant="contained" color="primary" className={classes.signInButton}>Sign In</Button></Link>*/
         <Button
             variant="contained"
             color="primary"

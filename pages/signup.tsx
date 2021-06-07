@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-// @ts-ignore
+
 export default function SignUp(props: any) {
     const classes = useStyles();
     const router = useRouter();
@@ -163,7 +163,7 @@ event.preventDefault()
                         </FormControl>
                         <Button variant="contained" color="primary" type="submit">Sign Up</Button>
                     </form>
-                    <Link href="/signIn">Already have an account? </Link>
+                    <Link href="/login">Already have an account? </Link>
                 </div>
             </div>
             </div>

@@ -98,7 +98,6 @@ export default function login() {
         auth.login(() => {
             if (email === result.email && values.password === result.password) {
                 router.push("/");
-                // @ts-ignore
                 context.toggleSignIn();
             }
         })
