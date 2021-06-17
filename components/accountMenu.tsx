@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Avatar, IconButton, Menu, MenuItem, makeStyles, Button} from '@material-ui/core';
-import {AppContext} from '../pages/AppContext';
+import {AppContext} from './AppContext';
 
 const useStyles = makeStyles((theme) => ({
     avatar: {

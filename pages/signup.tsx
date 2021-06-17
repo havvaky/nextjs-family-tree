@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {Button, FormControl, IconButton, makeStyles, Typography} from "@material-ui/core";
-import auth from "./auth";
+import auth from "../components/auth";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import InputLabel from '@material-ui/core/InputLabel';

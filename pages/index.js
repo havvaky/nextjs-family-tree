@@ -1,7 +1,7 @@
 
 import styles from '../styles/Home.module.css';
 import React, { useContext } from 'react';
-import { AppContext } from './AppContext';
+import { AppContext } from '../components/AppContext';
 import Button from '@material-ui/core/Button';
 import { useRouter } from 'next/router';
 

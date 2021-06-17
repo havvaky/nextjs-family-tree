@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Button, makeStyles} from '@material-ui/core';
-import {AppContext} from '../pages/AppContext';
+import {AppContext} from './AppContext';
 import {useRouter} from 'next/router'
 
 

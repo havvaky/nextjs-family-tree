@@ -5,7 +5,7 @@ import { Button } from '@material-ui/core';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import styles from '../styles/playground.module.css';
 import CustomNode from '../components/customNode';
-import {AppContext} from './AppContext';
+import {AppContext} from '../components/AppContext';
 
 
 

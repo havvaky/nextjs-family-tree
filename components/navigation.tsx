@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useRouter } from 'next/router';
-import {AppContext} from '../pages/AppContext';
+import {AppContext} from './AppContext';
 import SignInButton from './signInButton';
 import AccountMenu from './accountMenu';
 

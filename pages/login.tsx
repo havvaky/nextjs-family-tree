@@ -3,14 +3,14 @@ import {Avatar, Button, IconButton, makeStyles, FormControl} from '@material-ui/
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
-import auth from './auth';
+import auth from '../components/auth';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import result from 'postcss/lib/result';
-import { AppContext } from './AppContext';
+import { AppContext } from '../components/AppContext';
 
 
 

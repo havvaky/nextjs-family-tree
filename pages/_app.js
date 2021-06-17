@@ -4,7 +4,7 @@ import React, {useEffect} from 'react';
 import theme from './theme';
 import Head from 'next/head';
 import Layout from '../components/layout'
-import { AppProvider } from './AppContext'
+import { AppProvider } from '../components/AppContext'
 
 
 
