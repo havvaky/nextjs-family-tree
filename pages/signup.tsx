@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from "react";
-import {Button, FormControl, IconButton, makeStyles, TextField, Typography} from "@material-ui/core";
+import React, { useState } from "react";
+import {Button, FormControl, IconButton, makeStyles, Typography} from "@material-ui/core";
 import auth from "./auth";
 import Link from 'next/link';
-import { useRouter } from 'next/router'
-import Layout from '../components/layout';
+import { useRouter } from 'next/router';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputAdornment from '@material-ui/core/InputAdornment';

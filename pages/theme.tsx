@@ -35,14 +35,14 @@ const theme = createMuiTheme({
         },
         MuiSvgIcon: {
             root: {
-                width: '1.5em',
-                height: '1.5em',
-                fontSize: '0.6em',
+                width: '1.8em',
+                height: '1.8em',
+                fontSize: '0.8em',
             },
         },
         MuiInputBase: {
             root: {
-                fontSize: '0.7rem',
+                fontSize: '0.9rem',
                 fontWeight: 400,
 
             }

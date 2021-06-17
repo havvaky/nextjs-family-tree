@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
         background: '#7b1fa2',
     },
     menu: {
-        marginTop: '1.7em',
+        marginTop: '2.5em',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -47,9 +47,7 @@ export default function accountMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
     >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem className={classes.signOut} onClick={handleClose}>Sign out</MenuItem>
+        <MenuItem className={classes.signOut} onClick={handleClose}>Sign Out</MenuItem>
     </Menu>
    </>)
 }

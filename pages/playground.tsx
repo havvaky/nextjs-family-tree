@@ -30,9 +30,6 @@ const initialSchema = createSchema({
             inputs: [ { id: 'port-2'} ],
             render: CustomNode,
         },
-    ],
-    links: [
-        // { input: 'port-1',  output: 'port-2', label: '' }
     ]
 });
 
