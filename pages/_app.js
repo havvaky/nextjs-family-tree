@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import {ThemeProvider} from '@material-ui/core/styles';
 import React, {useEffect} from 'react';
-import theme from './theme';
+import theme from '../components/theme';
 import Head from 'next/head';
 import Layout from '../components/layout'
 import { AppProvider } from '../components/AppContext'
