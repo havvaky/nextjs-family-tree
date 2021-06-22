@@ -1,5 +1,5 @@
 
-let users = [{"firstName":"Havva", "lastName":"Yildiz", "email":"havvak@yahoo.com", "password":"1234", "role":"admin"}]
+let users = [{"firstName":"Havva", "lastName":"Yildiz", "email":"admin@familytree.com", "password":"1234", "role":"admin"}]
 
 
 
