@@ -1,2 +1,2 @@
 // js file
-let myName = "Havva";
+let myName = "Havva Kahya";
